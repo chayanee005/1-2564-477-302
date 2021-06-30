@@ -22,7 +22,7 @@
     
     
     <!-- link -->
-    <a herf="https://www.fms.psu.ac.th" target="_blank">คณะวิทยาการจัดการ</a>
+    <a href="https://www.fms.psu.ac.th" target="_blank">คณะวิทยาการจัดการ</a>
     
     <!-- image -->
     <img src="picture.jpg" alt="my picture">
@@ -86,9 +86,9 @@
 
     <!-- form -->
     <h2>เข้าสู่ระบบ</h2>
-    <form method="Get" action="check_login.html" enctype="">
-        <label for="username">รหัสผู้ใช้งาน</label>
-        <input type="text" id="username">
+    <form method="Get" action="check_login.html" enctype="multipart/form-data">
+        <!-- <label for="username">รหัสผู้ใช้งาน</label> -->
+        <input type="text" id="username" placeholder="รหัสผู้ใช้งาน">
         <br>
         <label for="passwd">รหัสผ่าน</label>
         <input type="password" id="passwd">
@@ -107,7 +107,7 @@
             <option value="1">ใช้งาน</option>
             <option value="0">ยกเลิก</option>
         </select>
-
+        <br>
         <input type="submit" value="เข้าสู่ระบบ">
         <input type="reset" value="ยกเลิก">
         
