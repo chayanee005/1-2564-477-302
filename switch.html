@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><Title></Title></title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        var str_day = "";
+        var get_num_day = new Date().getDay();
+        
+        switch (get_num_day) {
+            case 0:
+                str_day = "วันอาทิตย์";
+                break;
+            case 1:
+                str_day = "วันจันทร์";
+                break;
+            case 2:
+                str_day = "วันอังคาร";
+                break;
+            case 3:
+                str_day = "วันพุธ";
+                break;
+            case 4:
+                str_day = "วันพฤหัสบดี";
+                break;
+            case 5:
+                str_day = "วันศุกร์";
+                break;
+            case 6:
+                str_day = "วันเสาร์";
+                break;
+
+        }
+        console.log(str_day);
+        
+        
+        var str_month = "";
+        var get_num_month = new Date().getMonth();
+        switch (get_num_month) {
+            case 0:
+                str_month = "มกราคม";
+                break;
+            case 1:
+                str_month = "กุมภาพันธ์";
+                break;
+            case 7:
+                str_month = "สิงหาคม";
+                break;
+        }
+        var get_new_date = new Date().getDate();
+        var get_new_year = parseInt(new Date().getFullYear()) + 543;
+        console.log(str_day + " ที่ " + get_new_date + " " + str_month + " " + get_new_year);
+        //console.log(new Date());    //Wed Aug 04 2021 -> วันพุธ ที่ 4 สิงหาคม 2564
+        //document.getElementById("demo").innerHTML = "Today is" + day;
+    </script>    
+</body>
+</html>
