@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 2</title>
+    <style>
+        body {
+            background-image: url(Bg.jpg);
+            text-align: center;
+            margin-top: 200px;
+            margin-left: -50px;
+        }
+        body {
+            font-family: 'Kanit', sans-serif;
+            font-weight: bold;
+        }
+        .btn-1 {
+            background-color: hsla(357, 93%, 53%, 0.815);
+            color: #fff;
+            font-size: 20px;
+        }
+        button {
+            background-color: rgb(111, 241, 241);
+            color: black;
+            font-size: 15px;
+        }
+        p { font-size: 20px;}
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,200&display=swap" rel="stylesheet">
+</head>
+
+<body> 
+
+    <h1>Visit the website to find your address.</h1>
+    <p>Welcome to tell your location website.</p>
+    <button class="btn-1" id="click" onclick="show_dialog()">Click Here</button>
+    <br>
+    <br>
+    <img src="Map.jpg" alt="picture" width="400" height="250">
+        <script>
+            function show_dialog() {
+                var showdialog = document.getElementById("myDialog").showModal();
+            }
+        </script>
+    <dialog id="myDialog">
+        <p>Please enter your name and password.</ย>
+        <form>
+            <div>
+                <label>Username</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+            <br>
+            <div>
+                <label>Password</label>
+                <input type="passwd" name="password" id="password" required>
+            </div>
+            <br>
+            
+        </form>
+
+                
+
+<script>
+    function clickCounter() {
+        if(typeof(Storage) !== "undefined") {
+            if (localStorage.clickcount) {
+                localStorage.clickcount = Number(localStorage.clickcount)+1;
+            } else {
+                localStorage.clickcount = 1;
+            }
+            document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+        } else {
+            document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+        }
+    }
+    </script>
+     <!--[if lt IE 9]>
+       <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+     <![endif]-->
+ </head>
+
+
+ 
+ <p id="demo"></p>
+            <button onclick="getLocation(),clickCounter()">Your Location</button>
+            
+<p id="demo">ตำแหน่งที่ตั้งในปัจจุบันของคุณ</p>
+            
+    <script>
+        function show_dialog() {
+            var showdialog = document.getElementById("myDialog").showModal();
+        }
+        function close_dialog() {
+            var closedialog = document.getElementById("myDialog").close();
+        }
+    </script>
+    <div id="mapholder"></div>
+    
+    <script async defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoKoNVKdXRrp8YDgara5W1m2nfTU1dG5g&callback=initMap"
+  type="text/javascript"></script>
+    <script>
+    var x = document.getElementById("demo");
+    function getLocation() {
+        if (navigator.geolocation) {
+            /* glat = prompt("Enter your latitude", 0);
+            glon = prompt("Enter your longitude", 0);
+            showPosition(glat, glon); */
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        //glat = [6.998068, 6.998838] ;
+        //glon = [100.482465, 100.480831];
+        latlon = new google.maps.LatLng(lat, lon)
+        mapholder = document.getElementById('mapholder')
+        mapholder.style.height = '350px';
+        mapholder.style.width = '500px';
+
+        var myOptions = {
+            center: latlon,
+            zoom:16,
+            mapTypeId:google.maps.MapTypeId.ROADMAP,
+            mapTypeControl:false,
+            navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+        }
+
+        var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+        var marker = new google.maps.Marker({position:latlon, map:map, title:"You are here!"});
+    }
+
+    function showError(error) {
+       switch(error.code) {
+           case error.PERMISSION_DENIED:
+               x.innerHTML = "User denied the request for Geolocation."
+               break;
+           case error.POSITION_UNAVAILABLE:
+               x.innerHTML = "Location information is unavailable."
+               break;
+           case error.TIMEOUT:
+               x.innerHTML = "The request to get user location timed out."
+               break;
+           case error.UNKNOWN_ERROR:
+               x.innerHTML = "An unknown error occurred."
+               break;
+       }
+   }
+   </script> 
+   <br>
+    <div id="result"></div>
+    <br>
+    <button type="button" onclick="close_dialog()">Close</button>
+      
+    </dialog>    
+</body>
+</html>
